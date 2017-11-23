@@ -1,0 +1,214 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-8" ng-init='fetch("email")'>
+    <div>
+        <input ng-checked="true" id="s1" name="s" type="radio" ng-model="home" value="homeonly"/>
+            <input id="s2" name="s" type="radio" ng-model="emailType" value="textonlyemail"/>
+                <input id="s3" name="s" type="radio" ng-model="emailType" value="htmlemail"/>
+                    <input id="s4" name="s" type="radio"/>
+                        <div class="optiontabs">
+                            <label for="s1">
+                                Home
+                            </label>
+                            <label for="s2">
+                                Text Emails
+                            </label>
+                            <label for="s3">
+                                HTML Emails
+                            </label>
+                             <label for="s4">
+                                Campaign
+                            </label>
+                        </div>
+
+                        <ul class="dataTab">
+
+                          <li>
+                            Home
+                          </li>
+                            <li>
+                                <div style="border:2px solid black;">
+                                    <span style="margin-left:15px;">
+                                        Quick Search:
+                                    </span>
+                                    <br>
+                                        <br>
+                                            <table style="margin-left:15px;">
+                                                <tr>
+                                                    <td style="width:300px;">
+                                                        Date Filter:
+                                                    </td>
+                                                    <td style="width:300px;">
+                                                        Name :
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input name="date1" type="date">
+                                                        </input>
+                                                    </td>
+                                                    <td>
+                                                        <input name="query" ng-model="searchEmailByText" type="text" placeholder="Search email by name" required="">
+                                                        </input>
+                                                    </td>
+                                                    <td>
+                                                        <button bla="" class="btn btn-info" ng-click="showTable()" style="background-color:#343637 ;border-color:#343637 ;" type="button">
+                                                            <span class="glyphicon glyphicon-search">
+                                                            </span>
+                                                            Search
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br/>
+                                        </br>
+                                    </br>
+                                </div>
+                                <table class="table table-striped" st-safe-src="rowCollection" st-table="data" style="border: 1px solid black;">
+                                    <thead>
+                                        <tr>
+                                            <th row-select-all="data" selected="selected" style="border: 1px solid black;">
+                                            </th>
+                                            <th st-sort="Name" style="border: 1px solid black;">
+                                                <b>
+                                                    Name
+                                                </b>
+                                            </th>
+                                            <th st-sort="Description" style="border: 1px solid black;">
+                                                <b>
+                                                    Description
+                                                </b>
+                                            </th>
+                                            <th st-sort="createdBy.name" style="border: 1px solid black;">
+                                                <b>
+                                                    Owner
+                                                </b>
+                                            </th>
+                                            <th st-sort="createdDate" style="border: 1px solid black;">
+                                                <b>
+                                                    createdDate
+                                                </b>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="fd in response | filter:emailType ">
+                                            <!-- |filter:'searchEmail' -->
+                                            <td>
+                                                    <input name="group" ng-model="$parent.selectedValue" type="radio" ng-value="fd">
+                                                     </input>
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.name}}
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.description}}
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.createdBy.name}}
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.createdDate | date}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                              <li>
+                                    <table>
+                                      <tbody>
+                                        <tr ng-repeat="fd in response | filter:emailType ">
+                                            <!-- |filter:'searchEmail' -->
+                                            <td>
+                                                Select
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.name}}
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.description}}
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.createdBy.name}}
+                                            </td>
+                                            <td style="border: 1px solid black;">
+                                                {{fd.createdDate | date}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                          </li>
+                        </ul>
+                    </input>
+                </input>
+            </input>
+        </input>
+    <div class="col-md-2">
+        <button bla="" class="btn btn-info" ng-click="proceed()" style="background-color:#343637 ;border-color:#343637 ;" type="button">
+                                                         Proceed to deploy
+    </div>
+    </div>
+
+    
+
+
+<style type="text/css">
+
+table input[type=radio] {
+    position: unset;
+}
+
+input[type=radio] {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+
+.optiontabs label {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 4px;
+    margin-bottom: -1px;
+    margin-left: -1px;
+    background: #EEE;
+    padding: 12px 24px;
+    border: solid 1px #DDD;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    background-color: #EEE;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    box-shadow: 0 -1px 6px rgba(0,0,0,0.1) inset;
+    color: #666;
+    text-align: center;
+}
+
+input:nth-child(1):checked ~ .optiontabs label:nth-child(1), input:nth-child(2):checked ~ .optiontabs label:nth-child(2), input:nth-child(3):checked ~ .optiontabs label:nth-child(3){
+    padding: 14px 24px;
+    border-bottom-color: #FFF;
+    background: #FFF;
+    box-shadow: none;
+    color: #000;
+    text-align: center;
+}
+
+input:nth-child(1):checked ~ .dataTab li:nth-child(1), input:nth-child(2):checked ~ .dataTab li:nth-child(2),input:nth-child(3):checked ~ .dataTab li:nth-child(3) {
+    display: block;
+}
+
+.dataTab {
+  padding: 0px;
+}
+
+.dataTab li {
+    display: none;
+    padding: 1em;
+    border: solid 1px #DDD;
+    border-radius: 0 5px 5px 5px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 20px rgba(0,0,0,0.4);
+    min-height: 80vh;
+}
+</style>

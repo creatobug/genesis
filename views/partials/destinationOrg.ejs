@@ -1,0 +1,33 @@
+<div>
+        <h3>Select the Destination Org</h3>
+
+        <table class="table">
+          <tr>
+            <th>Select
+            </th>
+            <th>Name
+            </th>
+
+
+          </tr>
+          <tr ng-repeat="company in companies">
+              <td>
+                  <input type="radio" name="group" ng-model="$parent.selectedValue" value="{{company.clientId}}:{{company.clientSecret}}"> 
+              </td>
+            <td>
+              {{company.orgName}}
+            </td>
+
+          </tr>
+        </table>
+
+
+        <br>
+        <br>
+        <br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" ng-click="previous()">Previous</button>
+          <button type="submit" class="btn btn-success" ng-click="deploy()">Login and Deploy</button>
+
+        </div>
+</div>

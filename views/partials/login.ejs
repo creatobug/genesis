@@ -1,0 +1,24 @@
+<div class="col-md-12">
+      <h3>Login</h3>
+      
+      <form ng-submit="formSubmit()" class="form">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="user.clientId" placeholder="client ID" required=""/>
+          </div> 
+		  
+		  <div class="form-group">
+            <input type="text" class="form-control" ng-model="user.clientSecret" placeholder="client secret" required=""/>
+          </div>
+
+          <div class="form-group">
+            <!-- <button type="submit" class="btn btn-success">Login</button> -->
+            <button type="submit" class="btn btn-success">Login</button>
+            <span class="text-danger">{{ error }}</span>
+          </div>
+
+        </div>
+      </form>
+</div> 
+
+<!-- <h2>{{name}}</h2> -->

@@ -1,0 +1,88 @@
+<div class="col-md-8 col-md-offset-2 sourceContainer">
+    <button align="right" class="btn btn-success" data-target="#myModal" data-toggle="modal" ng-click="clear()" style="float:right;" type="submit">
+        Register New Org
+    </button>
+    <h3>
+        Select the Source Org:
+    </h3>
+    <table class="table">
+        <tr>
+            <th>
+                Select
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        <tr ng-repeat="company in companies">
+            <td>
+                <input name="group" ng-model="$parent.selectedValue" type="radio" value="{{company.clientId}}:{{company.clientSecret}}">
+                </input>
+            </td>
+            <td>
+                {{company.orgName}}
+            </td>
+            <td>
+                <input class="btn btn-primary" ng-click="removeRow(company.orgName)" style="background-color:#343637 ;border-color=#343637;" type="button" value="Remove"/>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <div class="form-group">
+            <button class="btn btn-success" ng-click="login()" style="float: right;" type="submit">
+                Login & Proceed
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">
+                        ×
+                    </button>
+                    <h4 class="modal-title">
+                        Org Details
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control" ng-model="orgName" placeholder="Org Name" required="" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" ng-model="clientid" placeholder="client ID" required="" type="text"/>
+                    </div>
+                    <!--<div class="form-group">
+                        <input type="password" class="form-control" ng-model="password" placeholder="password" required=""/>
+                      </div> -->
+                    <div class="form-group">
+                        <input class="form-control" ng-model="clientsecret" placeholder="client secret" required="" type="text"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" ng-click="addRow()" type="button">
+                        Submit
+                    </button>
+                    <button class="btn btn-default" data-dismiss="modal" type="button">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .sourceContainer{
+    border: 1px solid black;
+    padding: 20px;
+          }
+</style>
