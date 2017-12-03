@@ -1,6 +1,25 @@
-var genesis = angular.module('genesis', ['ngRoute','genesisController']);
+var genesis = angular.module('genesis', ['ngRoute','genesisController', 'thatisuday.ng-spin']);
 
-genesis.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+genesis.config(['$routeProvider','$locationProvider', 'ngSpinOpsProvider', '$httpProvider',function($routeProvider,$locationProvider, ngSpinOpsProvider, $httpProvider){
+  console.log('ngSpinOpsProvider', ngSpinOpsProvider);
+  ngSpinOpsProvider.setOps({
+		autoGlobal : true,
+		spinner : 'bars', // bars, big-bang, binary, cubes, flipboard, ping, plane, snake, sos, worm
+		size : 'normal',
+		color : 'black',
+		position : 'center',
+		blocking : false,
+		delay : 0,
+		extend : 100
+  });
+  
+  $httpProvider.interceptors.push('myHttpInterceptor');
+  // var spinnerFunction = function (data, headersGetter, $ngSpin) {
+  //     // todo start the spinner here
+  //     //alert('start spinner');
+  //     $ngSpin.start();
+  //     return data;
+  // };
 
 $locationProvider.html5Mode(true);
 $routeProvider
@@ -53,3 +72,32 @@ redirectTo:'/'
 
 }
 ]);
+genesis.factory('myHttpInterceptor', function($q) {
+  return {
+    // optional method
+    'request': function(config) {
+      // do something on success
+      return config;
+    },
+
+    // optional method
+   'requestError': function(rejection) {
+      // do something on error
+      console.log(rejection);
+    },
+
+
+
+    // optional method
+    'response': function(response) {
+      // do something on success
+      return response;
+    },
+
+    // optional method
+   'responseError': function(rejection) {
+      // do something on error
+      console.log(rejection);
+    }
+  };
+});
